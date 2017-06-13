@@ -19,13 +19,13 @@ class Nextpay_Payment
     public $amount = 0;
     public $trans_id = "";
     public $params = array();
-    public $server_soap = "http://api.nextpay.org/gateway/token.wsdl";
-    //public $server_soap = "http://api.nextpay.org/gateway/token?wsdl";
-    public $server_http = "http://api.nextpay.org/gateway/token.http";
-    public $request_http = "http://api.nextpay.org/gateway/payment";
-    public $request_verify_soap = "http://api.nextpay.org/gateway/verify.wsdl";
-    //public $request_verify_soap = "http://api.nextpay.org/gateway/verify?wsdl";
-    public $request_verify_http = "http://api.nextpay.org/gateway/verify.http";
+    public $server_soap = "https://api.nextpay.org/gateway/token.wsdl";
+    //public $server_soap = "https://api.nextpay.org/gateway/token?wsdl";
+    public $server_http = "https://api.nextpay.org/gateway/token.http";
+    public $request_http = "https://api.nextpay.org/gateway/payment";
+    public $request_verify_soap = "https://api.nextpay.org/gateway/verify.wsdl";
+    //public $request_verify_soap = "https://api.nextpay.org/gateway/verify?wsdl";
+    public $request_verify_http = "https://api.nextpay.org/gateway/verify.http";
     public $callback_uri = "http://example.com";
     private $keys_for_verify = array("api_key","order_id","amount","callback_uri");
     private $keys_for_check = array("api_key","order_id","amount","trans_id");
@@ -503,11 +503,27 @@ class Nextpay_Payment
 	    -48 => "commission rate not detect",
 	    -49 => "trans repeated",
 	    -50 => "account not found",
-	    -51 => "user not found"
+	    -51 => "user not found",
+	    -60 => "email incorrect",
+	    -61 => "national code incorrect",
+	    -62 => "postal code incorrect",
+	    -63 => "postal add incorrect",
+	    -64 => "desc incorrect",
+	    -65 => "name family incorrect",
+	    -66 => "tel incorrect",
+	    -67 => "account name incorrect",
+	    -68 => "product name incorrect",
+	    -69 => "callback success incorrect",
+	    -70 => "callback failed incorrect",
+	    -71 => "phone incorrect",
+	    -72 => "bank not response"
         );
-
-        echo "<h2>code error : {$error_code}</h2>";
-        echo "<h3>description error : {$error_array[$error_code]}</h3>";
+        
+        if (array_key_exists($error_code, $error_array)) {
+		return $error_array[$error_code];
+        } else {
+		return "error code : $error_code";
+	}
     }
 
     /**
