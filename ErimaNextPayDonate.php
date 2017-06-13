@@ -32,12 +32,12 @@ if ( is_admin() )
         add_action('admin_menu', 'ENPD_AdminMenuItem');
         function ENPD_AdminMenuItem()
         {
-	add_menu_page( 'تنظیمات افزونه حمایت مالی - نکست پی', 'حمات مالی', 'administrator', 'ENPD_MenuItem', 'ENPD_MainPageHTML', /*plugins_url( 'myplugin/images/icon.png' )*/'', 6 ); 
+	add_menu_page( 'تنظیمات افزونه حمایت مالی - نکست پی', 'حمایت مالی', 'administrator', 'ENPD_MenuItem', 'ENPD_MainPageHTML', /*plugins_url( 'myplugin/images/icon.png' )*/'', 6 ); 
         add_submenu_page('ENPD_MenuItem','نمایش حامیان مالی','نمایش حامیان مالی', 'administrator','ENPD_Hamian','ENPD_HamianHTML');
         }
 }
 
-function ENP_MainPageHTML()
+function ENPD_MainPageHTML()
 {
 	include('ENPD_AdminPage.php');
 }
@@ -77,7 +77,7 @@ function NextPayDonateForm() {
     
     if($api_key == '')
     {
-      $error = 'کد دروازه پرداخت وارد نشده است' . "<br>\r\n";
+      $error = 'کلید مجوز دهی پرداخت وارد نشده است' . "<br>\r\n";
     }
     
     $order_id = time();

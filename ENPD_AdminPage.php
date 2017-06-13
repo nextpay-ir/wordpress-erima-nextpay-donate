@@ -45,7 +45,7 @@ if ( $_POST ) {
   <table class="form-table">
     <tbody>
       <tr class="user-first-name-wrap">
-        <th><label for="ENPD_api_key">کد دروازه پرداخت</label></th>
+        <th><label for="ENPD_api_key">کلید مجوز دهی پرداخت</label></th>
         <td>
           <input type="text" class="regular-text" value="<?php echo get_option( 'ENPD_api_key'); ?>" id="ENPD_api_key" name="ENPD_api_key">
           <p class="description indicator-hint">XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</p>
